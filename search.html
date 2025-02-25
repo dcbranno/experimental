@@ -30,9 +30,21 @@
             font-size: 24px;
             font-weight: bold;
         }
-        .header .cart {
+        .cart-container {
+            position: relative;
             font-size: 18px;
             cursor: pointer;
+        }
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 14px;
+            border-radius: 50%;
+            padding: 5px 10px;
+            display: none;
         }
         /* Search Results */
         .search-info {
@@ -69,13 +81,17 @@
             font-size: 16px;
             color: #555;
         }
-        .product button {
+        .add-to-cart {
             background: #ff9900;
             color: white;
             border: none;
             padding: 10px;
             cursor: pointer;
             border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .added {
+            background: blue !important;
         }
         .back-button {
             display: block;
@@ -83,7 +99,7 @@
             text-decoration: none;
             color: white;
             background: #0073e6;
-            padding: 10px 20px;
+            padding: 10px;
             border-radius: 5px;
         }
     </style>
@@ -96,44 +112,69 @@
             <a href="#">Categories</a>
             <a href="#">Deals</a>
         </div>
-        <div class="cart">🛒 Cart</div>
+        <div class="cart-container">
+            🛒 Cart <span class="cart-count">0</span>
+        </div>
     </div>
 
-    <div class="search-info" id="searchInfo"></div>
+    <div class="search-info">Found 10 products based on your search term "<span id="searchTerm"></span>"</div>
 
-    <div class="product-grid">
-        <script>
-            const urlParams = new URLSearchParams(window.location.search);
-            const query = urlParams.get('q');
-            document.getElementById('searchInfo').innerText = `Found 10 products based on your search term "${query}"`;
-
-            const products = [
-                { name: "Product 1", price: "$19.99", image: "https://via.placeholder.com/150" },
-                { name: "Product 2", price: "$24.99", image: "https://via.placeholder.com/150" },
-                { name: "Product 3", price: "$14.99", image: "https://via.placeholder.com/150" },
-                { name: "Product 4", price: "$29.99", image: "https://via.placeholder.com/150" },
-                { name: "Product 5", price: "$34.99", image: "https://via.placeholder.com/150" },
-                { name: "Product 6", price: "$12.99", image: "https://via.placeholder.com/150" },
-                { name: "Product 7", price: "$22.49", image: "https://via.placeholder.com/150" },
-                { name: "Product 8", price: "$27.99", image: "https://via.placeholder.com/150" },
-                { name: "Product 9", price: "$18.99", image: "https://via.placeholder.com/150" },
-                { name: "Product 10", price: "$31.49", image: "https://via.placeholder.com/150" }
-            ];
-
-            let productGrid = document.querySelector('.product-grid');
-            products.forEach(product => {
-                productGrid.innerHTML += `
-                    <div class="product">
-                        <img src="${product.image}" alt="${product.name}">
-                        <h3>${product.name}</h3>
-                        <p>${product.price}</p>
-                        <button>Add to Cart</button>
-                    </div>
-                `;
-            });
-        </script>
+    <div class="product-grid" id="productGrid">
+        <!-- Products will be inserted here -->
     </div>
 
     <a href="index.html" class="back-button">Back to Home</a>
+
+    <script>
+        // Simulated products
+        const products = [
+            { name: "Product 1", price: "$19.99", image: "https://via.placeholder.com/150" },
+            { name: "Product 2", price: "$24.99", image: "https://via.placeholder.com/150" },
+            { name: "Product 3", price: "$14.99", image: "https://via.placeholder.com/150" },
+            { name: "Product 4", price: "$29.99", image: "https://via.placeholder.com/150" },
+            { name: "Product 5", price: "$34.99", image: "https://via.placeholder.com/150" },
+            { name: "Product 6", price: "$12.99", image: "https://via.placeholder.com/150" },
+            { name: "Product 7", price: "$22.99", image: "https://via.placeholder.com/150" },
+            { name: "Product 8", price: "$27.99", image: "https://via.placeholder.com/150" },
+            { name: "Product 9", price: "$18.99", image: "https://via.placeholder.com/150" },
+            { name: "Product 10", price: "$31.99", image: "https://via.placeholder.com/150" }
+        ];
+
+        const productGrid = document.getElementById("productGrid");
+        const cartCount = document.querySelector(".cart-count");
+
+        // Get search term from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTerm = urlParams.get("q") || "All Products";
+        document.getElementById("searchTerm").innerText = searchTerm;
+
+        let cartItems = 0;
+
+        function addToCart(button) {
+            if (!button.classList.contains("added")) {
+                button.classList.add("added");
+                button.innerText = "Added";
+                cartItems++;
+                cartCount.innerText = cartItems;
+                cartCount.style.display = "inline-block";
+            }
+        }
+
+        function loadProducts() {
+            products.forEach((product, index) => {
+                const productDiv = document.createElement("div");
+                productDiv.classList.add("product");
+                productDiv.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>${product.price}</p>
+                    <button class="add-to-cart" onclick="addToCart(this)">Add to Cart</button>
+                `;
+                productGrid.appendChild(productDiv);
+            });
+        }
+
+        loadProducts();
+    </script>
 </body>
 </html>
