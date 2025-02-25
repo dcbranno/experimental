@@ -1,43 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>E-commerce Site</title>
-  <style>
-    /* Basic styling - customize as needed */
-    body {
-      font-family: sans-serif;
-    }
-    .header {
-      background-color: #f0f0f0;
-      padding: 20px;
-    }
-    .search-container {
-      display: flex;
-      align-items: center;
-    }
-    .search-bar {
-      flex-grow: 1;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px 0 0 5px;
-    }
-    .search-button {
-      padding: 10px;
-      background-color: #febd69;
-      border: 1px solid #ccc;
-      border-radius: 0 5px 5px 0;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        .header {
+            background-color: #232f3e;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            width: 50%;
+        }
+
+        .search-bar {
+            flex: 1;
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .search-button {
+            padding: 8px 16px;
+            background-color: #febd69;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .search-button:hover {
+            background-color: #f3a847;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+        /* Product Grid */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .product button {
+            padding: 8px 16px;
+            background-color: #ff9900;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .product button:hover {
+            background-color: #e68900;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="header">
-    <div class="search-container">
-      <input type="text" class="search-bar" placeholder="Search for products...">
-      <button class="search-button">Search</button>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">ShopEasy</div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search for products...">
+            <button class="search-button">Search</button>
+        </div>
     </div>
-  </div>
 
-  </body>
-</html>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to ShopEasy</h1>
+        <p>Your one-stop shop for everything you need!</p>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/200" alt="Product 1">
+            <h3>Product 1</h3>
+            <p>$19.99</p>
+           
