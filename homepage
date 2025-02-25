@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-commerce Site</title>
+  <style>
+    /* Basic styling - customize as needed */
+    body {
+      font-family: sans-serif;
+    }
+    .header {
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+    .search-bar {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px 0 0 5px;
+    }
+    .search-button {
+      padding: 10px;
+      background-color: #febd69;
+      border: 1px solid #ccc;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="search-container">
+      <input type="text" class="search-bar" placeholder="Search for products...">
+      <button class="search-button">Search</button>
+    </div>
+  </div>
+
+  </body>
+</html>
