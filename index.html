@@ -3,151 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopEasy - Home</title>
+    <title>My E-Commerce Store</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-
-        /* Header */
-        .header {
-            background-color: #232f3e;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: white;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        /* Search Bar */
-        .search-container {
-            display: flex;
-            width: 50%;
-        }
-
-        .search-bar {
-            flex: 1;
-            padding: 8px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-        }
-
-        .search-button {
-            padding: 8px 16px;
-            background-color: #febd69;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 0 4px 4px 0;
-        }
-
-        .search-button:hover {
-            background-color: #f3a847;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 50px;
-            background-color: #fff;
-            margin-top: 10px;
-        }
-
-        /* Product Grid */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product {
-            background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 5px;
-        }
-
-        .product h3 {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        .product p {
-            font-size: 16px;
-            color: #555;
-        }
-
-        .product button {
-            padding: 8px 16px;
-            background-color: #ff9900;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .product button:hover {
-            background-color: #e68900;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .search-container { margin: 50px auto; width: 50%; display: flex; }
+        input { flex: 1; padding: 10px; font-size: 16px; }
+        button { padding: 10px; font-size: 16px; cursor: pointer; }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
-    <div class="header">
-        <div class="logo">ShopEasy</div>
-        <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Search for products...">
-            <button class="search-button">Search</button>
-        </div>
+    <h1>Welcome to My E-Commerce Store</h1>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for products...">
+        <button onclick="searchProducts()">Search</button>
     </div>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Welcome to ShopEasy</h1>
-        <p>Your one-stop shop for everything you need!</p>
-    </div>
-
-    <!-- Product Grid -->
-    <div class="products">
-        <div class="product">
-            <img src="https://via.placeholder.com/200" alt="Product 1">
-            <h3>Product 1</h3>
-            <p>$19.99</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/200" alt="Product 2">
-            <h3>Product 2</h3>
-            <p>$24.99</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/200" alt="Product 3">
-            <h3>Product 3</h3>
-            <p>$15.99</p>
-            <button>Add to Cart</button>
-        </div>
-    </div>
-
+    <script>
+        function searchProducts() {
+            let query = document.getElementById('searchInput').value;
+            window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+        }
+    </script>
 </body>
 </html>
